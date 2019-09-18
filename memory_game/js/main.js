@@ -1,67 +1,73 @@
-// Array to store all cards
+console.log("Up and running!");
 var cards = [
-{
-	rank:'queen',
-	suit:'hearts',
-	cardImage:'images/queen-of-hearts.png'
+   {
+       rank: "queen",
+       suit: "hearts",
+       cardImage: "images/queen-of-hearts.png",
+   },
+   {
+      rank: "queen",
+      suit: "diamonds",
+      cardImage: "images/queen-of-diamonds.png",
+   },
 
-},
-{
-	rank:'queen',
-	suit:'diamonds',
-	cardImage:'images/queen-of-diamonds.png'
-
-},
-{
-	rank:'king',
-	suit:'hearts',
-	cardImage:'images/king-of-hearts.png'
-
-},
-{
-	rank:'king',
-	suit:'hearts',
-	cardImage:'images/king-of-hearts.png'
-
-}
+   {
+    rank: "king",
+    suit: "hearts",
+    cardImage: "images/king-of-hearts.png",
+   },
+    {
+    rank: "king",
+    suit: "diamonds",
+    cardImage: "images/king-of-diamonds.png",
+   },
 ];
 
-// Array to store the cards in play
 var cardsInPlay = [];
 
-// Check for a match
-var checkForMatch = function () {
-  // Check the two cards match - message to user
-  if (cardsInPlay[0] === cardsInPlay[1]) {
-    console.log("You found a match!");
-  } else {
-    console.log("Sorry, try again.");
+ function checkForMatch() {
+  //if (cardsInPlay.length == 2) {
+    if (cardsInPlay[0] === cardsInPlay[1]) {
+          alert("You found a match!");
+          //setTimeout('location', 50000);
+        //location.reload()
 
-  }
-};
+      } else {
+          alert("Sorry, try again");
+        };
 
-//  Function : User flipping a card
-var flipCard = function (cardId) {
+  };
 
-  // Console message: which card was flipped .
-  console.log("User flipped " + cards[cardId].rank);
-  console.log(cards[cardId].suit);
-  console.log(cards[cardId].cardImage);
 
-  // Add card to array of cardsInPlay
+function flipCard() {
+    var cardId = this.getAttribute('data-id');
+ //console.log("User flipped" + cards[cardId].rank);
   cardsInPlay.push(cards[cardId].rank);
-
-  // Check to see if two cards have been played
-  if (cardsInPlay.length === 2) {
-    // Call the checkForMatch function
+ this.setAttribute('src', cards[cardId].cardImage);
+//console.log(cards[cardId].suit);
+ if (cardsInPlay.length === 2){
     checkForMatch();
+    //cardsInPlay = [];
+
+ };
+};
+
+console.log(cardsInPlay);
+
+
+ function createBoard() {
+  const cardTable = document.getElementById('game-board');
+  for (var i = 0; i < cards.length; i++) {
+  var cardElement = document.createElement('img');
+    cardElement.setAttribute('src', 'images/back.png');
+    cardElement.setAttribute('data-id', i);
+    cardElement.addEventListener('click', flipCard);
+    cardTable.appendChild(cardElement);
+
   }
 };
 
+createBoard();
 
-// For now, we are manually calling the flipCard function
-// to represent a user's play
-// Call the flipCard function, passing in an index as the argument
-flipCard(2);
-// Call the flipCard function, passing in an index as the argument
-flipCard(2);
+
+
