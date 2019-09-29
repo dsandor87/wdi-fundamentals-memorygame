@@ -104,3 +104,7 @@ float: right;
 	color: #F15B31;
 	font-weight: 700;
 }
+
+.game-board{
+	transform: rotateY(180deg);
+}

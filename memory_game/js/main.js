@@ -29,11 +29,13 @@ var cardsInPlay = [];
   //if (cardsInPlay.length == 2) {
     if (cardsInPlay[0] === cardsInPlay[1]) {
           alert("You found a match!");
-          //setTimeout('location', 50000);
-        //location.reload()
+          setTimeout('location', 300000);
+        location.reload()
 
       } else {
           alert("Sorry, try again");
+          setTimeout('location', 300000);
+        location.reload()
         };
 
   };
@@ -41,10 +43,10 @@ var cardsInPlay = [];
 
 function flipCard() {
     var cardId = this.getAttribute('data-id');
- //console.log("User flipped" + cards[cardId].rank);
+ console.log("User flipped" + cards[cardId].rank);
   cardsInPlay.push(cards[cardId].rank);
  this.setAttribute('src', cards[cardId].cardImage);
-//console.log(cards[cardId].suit);
+console.log(cards[cardId].suit);
  if (cardsInPlay.length === 2){
     checkForMatch();
     //cardsInPlay = [];
